@@ -1,0 +1,41 @@
+﻿#<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    
+    <title></title>
+</head>
+<body>
+    <input id="btn" type="button" value="get daTA" />
+    <input id="btn2" type="button" value="get da"/>
+    <ul id="getdata"></ul>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+          var getdata = $('#getdata');
+        $('#btn').click(function () {
+          
+            debugger;
+                $.ajax({
+                    type: 'GET',
+                    url: "api/Users/",
+                    dataType: 'json',
+                    success: function (data) {
+                        getdata.empty();
+                        $.each(data, function (index, val) {
+                            var fullName = val.Fname + ' ' + val.Lname;
+                            getdata.append('<li>' + fullName + '</li>');
+                        });
+                    }
+                });
+            });
+        $('#btn2').click(function () {
+            debugger;
+           getdata.empty();
+            });
+        
+    });
+</script>
